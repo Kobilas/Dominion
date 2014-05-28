@@ -1,0 +1,85 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event;
+public class Keying extends JPanel
+{
+	public Rectangle character;
+	public int charW = 24;
+	public int charH = 36;
+	public boolean right = false;
+	public boolean left = false;
+	public boolean up = false;
+	public boolean down = false;
+	public Keying(Display f, Images i)
+	{
+		character = new Rectangle(180, 180, charW, charH);
+		f.addKeyListener(new KeyAdapter()
+		{
+			public void keyPressed(KeyEvent e)
+			{
+				if(e.getKeyCode() == KeyEvent.VK_D)
+				{
+					right = true;
+					character.x++;
+				}
+				if(e.getKeyCode() = KeyEvent.VK_A)
+				{
+					left = true;
+					character.x--;
+				}
+				if(e.getKeyCode() = KeyEvent.VK_W)
+				{
+					up = true;
+					character.y--;
+				}
+				if(e.getKeyCode() = KeyEvent.VK_S)
+				{
+					down = false;
+					character.y++;
+				}
+			}
+			public void keyReleased(KeyEvent e)
+			{
+				if(e.getKeyCode() == KeyEvent.VK_D)
+				{
+					right = false;
+				}
+				if(e.getKeyCode() == KeyEvent.VK_A)
+				{
+					left = false;
+				}
+				if(e.getKeyCode() == KeyEvent.VK_W)
+				{
+					up = false;
+				}
+				if(e.getKeyCode() == KeyEvent.VK_S)
+				{
+					down = false;
+				}
+		});
+	}
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		this.setBackground(Color.BLACK);
+		g.setColor(Color.WHITE);
+		g.fillRect(character.x, character.y, character.width, character.height);
+		if(right)
+		{
+			character.x++;
+		}
+		if(left)
+		{
+			character.x--;
+		}
+		if(up)
+		{
+			character.y--;
+		}
+		if(down)
+		{
+			character.y++;
+		}
+		repaint();
+	}
+}
