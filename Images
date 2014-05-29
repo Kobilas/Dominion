@@ -1,0 +1,11 @@
+import javax.swing.*;
+import java.awt.*;
+public class Images extends JPanel
+{
+    public int w = main.w;
+    public int h = main.h;
+    public Images()
+    {
+        this.setBackgroundColor(Color.Black);
+    }
+}
