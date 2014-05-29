@@ -1,0 +1,23 @@
+import javax.swing.*;
+import java.awt.*;
+public class ShootRectangle
+{
+    public Rectangle projectile;
+	public static void ShootRectangle(int xPos, int yPos, int widthOf, int heightOf, Color colorOf, boolean direction)
+	{
+		projectile = new Rectangle(xPos, yPos, widthOf, heightOf);
+	}
+	public void paintComponent(Graphics g)
+	{
+	    super.paintComponent(g);
+	    g.setColor(Color.RED);
+	    g.fillRect(projectile.x, projectile.y, projectile.width, projectile.height);
+	    if(direction)
+	    {
+	        for(int i=0;i<=20;i++)
+	        {
+	            
+	        }
+	    }
+	}
+}
