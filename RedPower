@@ -1,0 +1,22 @@
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+import java.awt.geom.*;
+public class RedPower extends PowerUp
+{
+    final long START = System.nanoTime();
+    int type = 1;
+    Random spawnFinder = new Random();
+    Ellipse2D.Double power;
+    public RedPower()
+    {
+        power = new Ellipse2D.Double(5, 5, makeXSpawnLocation(), makeYSpawnLocation());
+    }
+    public void paintComponent(Graphics g)
+    {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(Color.RED);
+        g2.fill(power);
+        repaint();
+    }
+}
