@@ -1,0 +1,32 @@
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+public class PowerUp extends JPanel
+{
+    final long START = System.nanoTime();
+    public int type = 0;
+    Random spawnFinder = new Random();
+    boolean spawnPower = true;
+    public PowerUp()
+    {
+    }
+    public int getType()
+    {
+        return type;
+    }
+    public int makeXSpawnLocation()
+    {
+        return spawnFinder.nextInt(1024);
+    }
+    public int makeYSpawnLocation()
+    {
+        return spawnFinder.nextInt(768);
+    }
+    public void spawnTimer()
+    {
+        if(System.nanoTime() % 10000000 == 0)
+        {
+            spawnPower = true;
+        }
+    }
+}
