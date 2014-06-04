@@ -15,4 +15,4 @@ public class main
 		f.setLocationRelativeTo(null);
 		f.setAlwaysOnTop(true);
 	}
-}	
+}
