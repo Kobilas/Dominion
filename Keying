@@ -78,14 +78,7 @@ public class Keying extends JPanel
                 }
                 if(e.getKeyCode() == KeyEvent.VK_I)
                 {
-                    if(right || left)
-                    {
-                        character.x += 20;
-                    }
-                    if(up || down)
-                    {
-                        character.y += 20;
-                    }
+                    RedPower swag = new RedPower();
                 }
             }
             public void keyReleased(KeyEvent e)
