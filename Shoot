@@ -1,23 +1,57 @@
 import javax.swing.*;
 import java.awt.*;
-public class ShootRectangle
+/**
+ * Write a description of class Shoot here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Shoot
 {
-    public Rectangle projectile;
-	public static void ShootRectangle(int xPos, int yPos, int widthOf, int heightOf, Color colorOf, boolean direction)
-	{
-		projectile = new Rectangle(xPos, yPos, widthOf, heightOf);
-	}
-	public void paintComponent(Graphics g)
-	{
-	    super.paintComponent(g);
-	    g.setColor(Color.RED);
-	    g.fillRect(projectile.x, projectile.y, projectile.width, projectile.height);
-	    if(direction)
-	    {
-	        for(int i=0;i<=20;i++)
-	        {
-	            
-	        }
-	    }
-	}
+    public static Rectangle Bullet;
+    static boolean u;
+    static boolean d;
+    static boolean l;
+    static boolean r;
+    public static void Shoot(int x, int y, boolean up, boolean down, boolean left, boolean right)
+    {
+        Bullet = new Rectangle(x, y, 20,20);
+        u = up;
+        d = down;
+        l = left;
+        r = right;
+        move();
+    }
+    public static void move()
+    {
+        if(u)
+        {
+            for(int i=0; i<21; i++)
+            {
+                Bullet.y--;
+            }
+        }
+        if(d)
+        {
+            for(int i=0; i<21; i++)
+            {
+                Bullet.y++;
+            }
+        }
+        if(r)
+        {
+            for(int i=0; i<21; i++)
+            {
+                Bullet.x++;
+            }
+        }
+        if(l)
+        {
+            for(int i=0; i<21; i++)
+            {
+                Bullet.x--;
+            }
+        }
+    }
 }
+
