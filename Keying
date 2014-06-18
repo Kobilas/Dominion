@@ -78,7 +78,7 @@ public class Keying extends JPanel
                 }
                 if(e.getKeyCode() == KeyEvent.VK_I)
                 {
-                    RedPower swag = new RedPower();
+                    Shoot.Shoot(character.x, character.y, up, down, left, right);
                 }
             }
             public void keyReleased(KeyEvent e)
@@ -117,6 +117,22 @@ public class Keying extends JPanel
                 }
             }
         });
+    }
+    public int get1X()
+    {
+        return character.x;
+    }
+    public int get1Y()
+    {
+        return character.y;
+    }
+    public int get2X()
+    {
+        return character2.x;
+    }
+    public int get2Y()
+    {
+        return character2.y;
     }
     public void paintComponent(Graphics g)
     {
