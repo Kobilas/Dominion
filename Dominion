@@ -1,22 +1,12 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
+import javax.swing.JFrame;
 public class Dominion extends JFrame
 {
-    public JPanel gp = (JPanel) getGlassPane();
-    public Images i;
-    public Keying k;
-    public PowerUp p;
+	public Game main;
     public Dominion()
     {
-        i = new Images();
-        gp.setVisible(true);
-        k = new Keying(this, i);
-        gp.setLayout(new GridLayout(1, 1, 0, 0));
-        this.setLayout(new GridLayout(1, 1, 0, 0));
-        gp.add(k);
-        this.add(i);
-        p = new PowerUp();
-        this.add(p);
-        gp.add(p);
+    	this.setLayout(new GridLayout(1, 1, 0, 0));
+    	main = new Game(this);
+    	this.add(main);
     }
 }
