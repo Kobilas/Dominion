@@ -1,43 +1,42 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.KeyAdapter;
 import java.awt.geom.Ellipse2D;
 public class Game extends JPanel
 {
-	public Dominion f;
-	public boolean alwaysTrue = true;
-	public Ellipse2D.Double force;
-	public Rectangle sword;
-	public Ellipse2D.Double bomb;
-    public Rectangle player;
-	public Ellipse2D.Double force2;
-	public Rectangle sword2;
-	public Ellipse2D.Double bomb2;
-    public Rectangle player2;
-    public int charW = 24;
-    public int charH = 36;
-    public int forcW = 20;
-    public int forcH = 20;
-    public int sworW = 50;
-    public int sworH = 10;
-    public int bombW = 40;
-    public int bombH = 40;
-    public boolean right = false;
-    public boolean left = false;
-    public boolean up = false;
-    public boolean down = false;
-	public boolean attacking = false;
-	public boolean charging = false;
-	public boolean bombing = false;
-    public boolean right2 = false;
-    public boolean left2 = false;
-    public boolean up2 = false;
-    public boolean down2 = false;
-	public boolean attacking2 = false;
-	public boolean charging2 = false;
-	public boolean bombing2 = false;
+	public static Dominion f;
+	public static boolean alwaysTrue = true;
+	public static Ellipse2D.Double force;
+	public static  Rectangle sword;
+	public static  Ellipse2D.Double bomb;
+    public static Rectangle player;
+	public static Ellipse2D.Double force2;
+	public static Rectangle sword2;
+	public static Ellipse2D.Double bomb2;
+    public static Rectangle player2;
+    public static int charW = 24;
+    public static int charH = 36;
+    public static int forcW = 20;
+    public static int forcH = 20;
+    public static int sworW = 50;
+    public static int sworH = 10;
+    public static int bombW = 40;
+    public static int bombH = 40;
+    public static boolean right = false;
+    public static boolean left = false;
+    public static boolean up = false;
+    public static boolean down = false;
+	public static boolean attacking = false;
+	public static boolean charging = false;
+	public static boolean bombing = false;
+    public static boolean right2 = false;
+    public static boolean left2 = false;
+    public static boolean up2 = false;
+    public static boolean down2 = false;
+	public static boolean attacking2 = false;
+	public static boolean charging2 = false;
+	public static boolean bombing2 = false;
     public Game(Dominion f)
     {
     	this.f = f;
@@ -263,6 +262,8 @@ public class Game extends JPanel
         	{
         		f.setVisible(false);
         		PrintWinner.Print();
+        		reset();
+        		repaint();
         	}
         }
         if(attacking)
@@ -275,16 +276,20 @@ public class Game extends JPanel
         	{
         		f.setVisible(false);
         		PrintWinner.Print();
+        		reset();
+        		repaint();
         	}
         }
         if(bombing)
         {
         	g2.setPaint(Color.RED);
         	g2.fill(bomb);
-        	if(player.contains(bomb.x, bomb.y))
+        	if(player2.contains(bomb.x, bomb.y))
         	{
         		f.setVisible(false);
         		PrintWinner.Print();
+        		reset();
+        		repaint();
         	}
         }
         if(right2)
@@ -310,8 +315,10 @@ public class Game extends JPanel
             force2.x--;
             if(player.contains(force2.x, force2.y))
         	{
-        		f.setVisible(false);
+            	f.setVisible(false);
         		PrintWinnerTwo.Print();
+        		reset();
+        		repaint();
         	}
         }
         if(attacking2)
@@ -324,6 +331,8 @@ public class Game extends JPanel
         	{
         		f.setVisible(false);
         		PrintWinnerTwo.Print();
+        		reset();
+        		repaint();
         	}
         }
         if(bombing2)
@@ -334,6 +343,8 @@ public class Game extends JPanel
         	{
         		f.setVisible(false);
         		PrintWinnerTwo.Print();
+        		reset();
+        		repaint();
         	}
         }
         if(player.x > 992)
@@ -369,6 +380,39 @@ public class Game extends JPanel
             player2.y += 5;
         }
         repaint();
+    }
+    public static void reset()
+    {
+    	player.x = 1;
+    	player.y = 1;
+    	player2.x = 992;
+    	player2.y = 700;
+    	sword.x = 1;
+    	sword.y = 1;
+    	sword2.x = 992;
+    	sword2.y = 700;
+    	force.x = 1;
+    	force.y = 1;
+    	force2.x = 992;
+    	force2.y = 700;
+    	bomb.x = 1;
+    	bomb.y = 1;
+    	bomb2.x = 992;
+    	bomb2.y = 700;
+    	right = false;
+        left = false;
+        up = false;
+        down = false;
+    	attacking = false;
+    	charging = false;
+    	bombing = false;
+        right2 = false;
+        left2 = false;
+        up2 = false;
+        down2 = false;
+    	attacking2 = false;
+    	charging2 = false;
+    	bombing2 = false;
     }
 
 }
