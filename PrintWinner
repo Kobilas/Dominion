@@ -13,13 +13,12 @@ public class PrintWinner
         //JPanel
         JPanel pnlButton = new JPanel();
         //Buttons
-        JButton Back = new JButton("To Main Menu");
+        JButton Back = new JButton("Play Again?");
         Back.addActionListener( new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                main.createMenu();
-                frame.setVisible(false);
+                DOMINATE.main(null);
             }
         });        
         //Label for the whole instructions
