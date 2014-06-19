@@ -1,0 +1,362 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyAdapter;
+import java.awt.geom.Ellipse2D;
+public class Game extends JPanel
+{
+	public Dominion f;
+	public boolean alwaysTrue = true;
+	public Ellipse2D.Double force;
+	public Rectangle sword;
+	public Ellipse2D.Double bomb;
+    public Rectangle player;
+	public Ellipse2D.Double force2;
+	public Rectangle sword2;
+	public Ellipse2D.Double bomb2;
+    public Rectangle player2;
+    public int charW = 24;
+    public int charH = 36;
+    public int forcW = 20;
+    public int forcH = 20;
+    public int sworW = 50;
+    public int sworH = 10;
+    public int bombW = 40;
+    public int bombH = 40;
+    public boolean right = false;
+    public boolean left = false;
+    public boolean up = false;
+    public boolean down = false;
+	public boolean attacking = false;
+	public boolean charging = false;
+	public boolean bombing = false;
+    public boolean right2 = false;
+    public boolean left2 = false;
+    public boolean up2 = false;
+    public boolean down2 = false;
+	public boolean attacking2 = false;
+	public boolean charging2 = false;
+	public boolean bombing2 = false;
+	public Game()
+	{
+		while(alwaysTrue)
+        {
+            if(player.contains(force2.x, force2.y) || player.contains(sword2.x, sword2.y) || player.contains(bomb2.x, bomb2.y))
+        	{
+        		f.setVisible(false);
+        		PrintWinnerTwo.Print();
+        		System.out.print("yolo");
+        	}
+        	if(player2.contains(force.x, force.y) || player2.contains(sword.x, sword.y) || player.contains(bomb.x, bomb.y))
+        	{
+        		f.setVisible(false);
+        		PrintWinner.Print();
+        		System.out.print("yolo");
+        	}
+        }
+	}
+    public Game(Dominion f)
+    {
+    	this.f = f;
+        player = new Rectangle(1, 1, charW, charH);
+        player2 = new Rectangle(992, 700, charW, charH);
+        f.addKeyListener(new KeyAdapter()
+        {
+            public void keyPressed(KeyEvent e)
+            {
+                if(e.getKeyCode() == KeyEvent.VK_D)
+                {
+                    right = true;
+                    player.x++;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_A)
+                {
+                    left = true;
+                    player.x--;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_W)
+                {
+                    up = true;
+                    player.y--;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_S)
+                {
+                    down = true;
+                    player.y++;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_E)
+                {
+                    if(right)
+                    {
+                        player.x += 35;
+                    }
+                    if(left)
+                    {
+                    	player.x -= 35;
+                    }
+                    if(down)
+                    {
+                        player.y += 35;
+                    }
+                    if(up)
+                    {
+                    	player.y -= 35;
+                    }
+                }
+                if(e.getKeyCode() == KeyEvent.VK_R)
+                {
+                	charging = true;
+                	force = new Ellipse2D.Double(player.x, player.y+10, forcW, forcH);
+                	
+                }
+                if(e.getKeyCode() == KeyEvent.VK_T)
+                {
+                	attacking = true;
+                	sword = new Rectangle(player.x, player.y, sworW, sworH);
+                }
+                if(e.getKeyCode() == KeyEvent.VK_Y)
+                {
+                	bombing = true;
+                	bomb = new Ellipse2D.Double(player.x-9, player.y-3, bombW, bombH);
+                }
+                if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+                {
+                    right2 = true;
+                    player2.x++;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_LEFT)
+                {
+                    left2 = true;
+                    player2.x--;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_UP)
+                {
+                    up2 = true;
+                    player2.y--;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_DOWN)
+                {
+                    down2 = true;
+                    player2.y++;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_U)
+                {
+                    if(right2)
+                    {
+                        player2.x += 35;
+                    }
+                    if(left2)
+                    {
+                    	player2.x -= 35;
+                    }
+                    if(down2)
+                    {
+                        player2.y += 35;
+                    }
+                    if(up2)
+                    {
+                    	player2.y -= 35;
+                    }
+                }
+                if(e.getKeyCode() == KeyEvent.VK_I)
+                {
+                	charging2 = true;
+                	force2 = new Ellipse2D.Double(player2.x, player2.y+10, forcW, forcH);
+                	
+                }
+                if(e.getKeyCode() == KeyEvent.VK_O)
+                {
+                	attacking2 = true;
+                	sword2 = new Rectangle(player2.x, player2.y, sworW, sworH);
+                }
+                if(e.getKeyCode() == KeyEvent.VK_P)
+                {
+                	bombing2 = true;
+                	bomb2 = new Ellipse2D.Double(player2.x-9, player2.y-3, bombW, bombH);
+                }
+            }
+            public void keyReleased(KeyEvent e)
+            {
+                if(e.getKeyCode() == KeyEvent.VK_D)
+                {
+                    right = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_A)
+                {
+                    left = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_W)
+                {
+                    up = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_S)
+                {
+                    down = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_R)
+                {
+                	charging = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_T)
+                {
+                	attacking = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+                {
+                    right2 = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_LEFT)
+                {
+                    left2 = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_UP)
+                {
+                    up2 = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_DOWN)
+                {
+                    down2 = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_I)
+                {
+                	charging2 = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_O)
+                {
+                	attacking2 = false;
+                }
+            }
+        });
+        
+    }
+    public int get1X()
+    {
+        return player.x;
+    }
+    public int get1Y()
+    {
+        return player.y;
+    }
+    public int get2X()
+    {
+        return player2.x;
+    }
+    public int get2Y()
+    {
+        return player2.y;
+    }
+    public void paintComponent(Graphics g)
+    {
+    	
+    	Graphics2D g2 = (Graphics2D) g;
+        super.paintComponent(g);
+        this.setBackground(Color.GRAY);
+        g.setColor(Color.MAGENTA);
+        g.fillRect(player.x, player.y, player.width, player.height);
+        g.setColor(Color.BLUE);
+        g.fillRect(player2.x, player2.y, player2.width, player2.height);
+        if(right)
+        {
+            player.x++;
+        }
+        if(left)
+        {
+            player.x--;
+        }
+        if(up)
+        {
+            player.y--;
+        }
+        if(down)
+        {
+            player.y++;
+        }
+        if(charging)
+        {
+        	g2.setPaint(Color.RED);
+            g2.fill(force);
+            force.x++;
+        }
+        if(attacking)
+        {
+        	g.setColor(Color.RED);
+        	g.fillRect(sword.x, sword.y, sword.width, sword.height);
+        	sword.x = player.x + 10;
+        	sword.y = player.y + 10;
+        }
+        if(bombing)
+        {
+        	g2.setPaint(Color.RED);
+        	g2.fill(bomb);
+        }
+        if(right2)
+        {
+            player2.x++;
+        }
+        if(left2)
+        {
+            player2.x--;
+        }
+        if(up2)
+        {
+            player2.y--;
+        }
+        if(down2)
+        {
+            player2.y++;
+        }
+        if(charging2)
+        {
+        	g2.setPaint(Color.GREEN);
+            g2.fill(force2);
+            force2.x--;
+        }
+        if(attacking2)
+        {
+        	g.setColor(Color.GREEN);
+        	g.fillRect(sword2.x, sword2.y, sword2.width, sword2.height);
+        	sword2.x = player2.x - 35;
+        	sword2.y = player2.y + 10;
+        }
+        if(bombing2)
+        {
+        	g2.setPaint(Color.GREEN);
+        	g2.fill(bomb2);
+        }
+        if(player.x > 992)
+        {
+            player.x -= 5;
+        }
+        if(player.x < 0)
+        {
+            player.x += 5;
+        }
+        if(player.y > 700)
+        {
+            player.y -= 5;
+        }
+        if(player.y < 0)
+        {
+            player.y += 5;
+        }
+        if(player2.x > 992)
+        {
+            player2.x -= 5;
+        }
+        if(player2.x < 0)
+        {
+            player2.x += 5;
+        }
+        if(player2.y > 700)
+        {
+            player2.y -= 5;
+        }
+        if(player2.y < 0)
+        {
+            player2.y += 5;
+        }
+        repaint();
+    }
+
+}
