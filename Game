@@ -21,8 +21,8 @@ public class Game extends JPanel
     public static int forcH = 20;
     public static int sworW = 50;
     public static int sworH = 10;
-    public static int bombW = 40;
-    public static int bombH = 40;
+    public static int bombW = 20;
+    public static int bombH = 20;
     public static boolean right = false;
     public static boolean left = false;
     public static boolean up = false;
@@ -284,7 +284,7 @@ public class Game extends JPanel
         {
         	g2.setPaint(Color.RED);
         	g2.fill(bomb);
-        	if(player2.contains(bomb.x, bomb.y))
+        	if(player2.contains(bomb.x+10, bomb.y+10))
         	{
         		f.setVisible(false);
         		PrintWinner.Print();
@@ -339,7 +339,7 @@ public class Game extends JPanel
         {
         	g2.setPaint(Color.GREEN);
         	g2.fill(bomb2);
-        	if(player.contains(bomb2.x, bomb2.y))
+        	if(player.contains(bomb2.x+10, bomb2.y+10))
         	{
         		f.setVisible(false);
         		PrintWinnerTwo.Print();
