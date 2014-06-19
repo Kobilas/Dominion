@@ -38,24 +38,6 @@ public class Game extends JPanel
 	public boolean attacking2 = false;
 	public boolean charging2 = false;
 	public boolean bombing2 = false;
-	public Game()
-	{
-		while(alwaysTrue)
-        {
-            if(player.contains(force2.x, force2.y) || player.contains(sword2.x, sword2.y) || player.contains(bomb2.x, bomb2.y))
-        	{
-        		f.setVisible(false);
-        		PrintWinnerTwo.Print();
-        		System.out.print("yolo");
-        	}
-        	if(player2.contains(force.x, force.y) || player2.contains(sword.x, sword.y) || player.contains(bomb.x, bomb.y))
-        	{
-        		f.setVisible(false);
-        		PrintWinner.Print();
-        		System.out.print("yolo");
-        	}
-        }
-	}
     public Game(Dominion f)
     {
     	this.f = f;
@@ -277,6 +259,11 @@ public class Game extends JPanel
         	g2.setPaint(Color.RED);
             g2.fill(force);
             force.x++;
+        	if(player2.contains(force.x, force.y))
+        	{
+        		f.setVisible(false);
+        		PrintWinner.Print();
+        	}
         }
         if(attacking)
         {
@@ -284,11 +271,21 @@ public class Game extends JPanel
         	g.fillRect(sword.x, sword.y, sword.width, sword.height);
         	sword.x = player.x + 10;
         	sword.y = player.y + 10;
+        	if(player2.contains(sword.x, sword.y))
+        	{
+        		f.setVisible(false);
+        		PrintWinner.Print();
+        	}
         }
         if(bombing)
         {
         	g2.setPaint(Color.RED);
         	g2.fill(bomb);
+        	if(player.contains(bomb.x, bomb.y))
+        	{
+        		f.setVisible(false);
+        		PrintWinner.Print();
+        	}
         }
         if(right2)
         {
@@ -311,6 +308,11 @@ public class Game extends JPanel
         	g2.setPaint(Color.GREEN);
             g2.fill(force2);
             force2.x--;
+            if(player.contains(force2.x, force2.y))
+        	{
+        		f.setVisible(false);
+        		PrintWinnerTwo.Print();
+        	}
         }
         if(attacking2)
         {
@@ -318,11 +320,21 @@ public class Game extends JPanel
         	g.fillRect(sword2.x, sword2.y, sword2.width, sword2.height);
         	sword2.x = player2.x - 35;
         	sword2.y = player2.y + 10;
+        	if(player.contains(sword2.x, sword2.y))
+        	{
+        		f.setVisible(false);
+        		PrintWinnerTwo.Print();
+        	}
         }
         if(bombing2)
         {
         	g2.setPaint(Color.GREEN);
         	g2.fill(bomb2);
+        	if(player.contains(bomb2.x, bomb2.y))
+        	{
+        		f.setVisible(false);
+        		PrintWinnerTwo.Print();
+        	}
         }
         if(player.x > 992)
         {
